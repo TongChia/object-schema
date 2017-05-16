@@ -42,8 +42,8 @@ describe('Field Test', () => {
   });
   
   it('Verify should reject', (done) => {
-    field1 = new Field([String, /^\w{1,5}$/]);
-    field1.verify('tomTom').catch((r) => {
+    field1 = new Field({type: String, validator: v => v === 'jerry'});
+    field1.verify('tom').catch((r) => {
       r.should.be.instanceOf(Error);
       done();
     });
